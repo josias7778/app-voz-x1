@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>App Voz – Paradas e Produção</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    label { display: block; margin-top: 12px; font-weight: bold; }
+    input { width: 100%; padding: 8px; margin-top: 4px; font-size: 16px; }
+    button { margin-top: 20px; padding: 12px 20px; font-size: 18px; cursor: pointer; }
+    #status { margin-top: 15px; font-weight: bold; color: #006600; }
+    #resumo { margin-top: 20px; background: #f3f3f3; padding: 12px; border-radius: 8px; display: none; }
+    #menuPosEnvio button { margin-right: 10px; }
+    #appDiv { display: none; }
+  </style>
+</head>
+<body>
+<audio id="beep" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+
+<!-- Tela de login -->
+<div id="loginDiv">
+  <h2>Login</h2>
+  <label>Usuário:<input id="usuarioLogin" /></label>
+  <label>Senha:<input type="password" id="senhaLogin" /></label>
+  <button id="loginBtn">Entrar</button>
+  <div id="loginStatus"></div>
+</div>
+
+<!-- Tela principal -->
+<div id="appDiv">
+  <h2>Apontamento de Parada (DISP)</h2>
+  <p>Cada vez que clicar, o app vai pedir o próximo campo. Fale só o valor.</p>
+
+  <label>Turma:<input id="turma" readonly /></label>
+  <label>Linha de Produção:<input id="linha" readonly /></label>
+  <label>Data Início:<input id="dataInicio" readonly /></label>
+  <label>Data Final:<input id="dataFinal" readonly /></label>
+  <label>Hora Início:<input id="horaInicio" readonly /></label>
+  <label>Hora Final:<input id="horaFinal" readonly /></label>
+  <label>Instalação:<input id="instalacao" readonly /></label>
+  <label>OP:<input id="op" readonly /></label>
+  <label>Motivo:<input id="motivo" readonly /></label>
+  <label>Origem:<input id="origem" readonly /></label>
+  <label>Classificação:<input id="classificacao" readonly /></label>
+
+  <button id="startBtn">Começar preenchimento</button>
+  <button id="repetirBtn" style="display:none">🔁 Repetir campo</button>
+  <button id="cancelarBtn" style="display:none">🧹 Cancelar e reiniciar</button>
+  <button id="enviarBtn" style="display:none">Enviar dados</button>
+
+  <div id="status"></div>
+  <div id="resumo"></div>
+  <div id="menuPosEnvio" style="display:none">
+    <button id="novaParadaBtn">➕ Nova parada</button>
+    <button id="apontarProducaoBtn">📦 Apontar produção</button>
+    <button id="encerrarBtn">⏹️ Encerrar</button>
+  </div>
+</div>
+
+<script>
+// ---------------- VARIÁVEIS GLOBAIS ----------------
+let token = null;
+let usuarioLogado = null;
+let campoAtual = 0;
+
+const camposDISP = [
+  { id: 'turma', prompt: 'Fale a Turma (ex: 01 ou 02)' },
+  { id: 'linha', prompt: 'Fale a Linha de Produção (coladeira A, B, C ou F)' },
+  { id: 'dataInicio', prompt: 'Fale a Data Início (ex: 0407)' },
+  { id: 'dataFinal', prompt: 'Fale a Data Final (ex: 0407)' },
+  { id: 'horaInicio', prompt: 'Fale a Hora Início (ex: zero s...
+    }
+  ]
+}
+</script>
+</body>
+</html>
